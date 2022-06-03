@@ -48,8 +48,21 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.http.get<Coin[]>('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-    .subscribe( 
+    // this.http.get<Coin[]>('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+    // .subscribe( 
+    //   response => {
+    //   console.log(response);
+    //   this.coins = response;
+    //   this.filteredCoins = response;
+    // },
+    // (err) => console.log(err)
+    // )
+    this.obtenerMonedas();
+   // throw new Error('Method not implemented.');
+  }
+
+  public obtenerMonedas(){
+    this.coinService.getCoins().subscribe( 
       response => {
       console.log(response);
       this.coins = response;
@@ -57,7 +70,8 @@ export class AppComponent implements OnInit {
     },
     (err) => console.log(err)
     )
-   // throw new Error('Method not implemented.');
+
+    
   }
 
 }
