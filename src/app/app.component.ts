@@ -22,9 +22,16 @@ import { CoinService } from './services/coin.service';
 export class AppComponent implements OnInit {
 
 
+
+
   coins: Coin[]=[];
 
-  filteredCoins: Coin[]=[];
+  //filteredCoins: Coin[]=[];
+
+    //Paginacion
+    config!:any;
+
+    collection = {count: 100,  filteredCoins: [] as Coin[]}
 
   titles : string[] = [
     '#',
@@ -39,12 +46,7 @@ export class AppComponent implements OnInit {
   constructor(private http:HttpClient,private coinService :CoinService){}
 
 
-  searchCoin(){
-   this.filteredCoins =  this.coins.filter((coin) => 
-    coin.name.toLowerCase().includes(this.searchText.toLowerCase()) || 
-    coin.symbol.toLowerCase().includes(this.searchText.toLowerCase())
-    );
-  }
+
 
 
   ngOnInit(): void {
@@ -59,18 +61,36 @@ export class AppComponent implements OnInit {
     // )
     this.obtenerMonedas();
    // throw new Error('Method not implemented.');
+
+   
+   this.config = {
+    itemsPerPage : 15,
+    currentPage: 1,
+    totalItems: this.collection.count
   }
+  }
+
+  
+ pageChanged(event:number){
+  this.config.currentPage = event;
+}
+
+searchCoin(){
+  this.collection .filteredCoins =  this.coins.filter((coin) => 
+   coin.name.toLowerCase().includes(this.searchText.toLowerCase()) || 
+   coin.symbol.toLowerCase().includes(this.searchText.toLowerCase())
+   );
+ }
 
   public obtenerMonedas(){
     this.coinService.getCoins().subscribe( 
       response => {
       console.log(response);
       this.coins = response;
-      this.filteredCoins = response;
+      this.collection.filteredCoins = response;
     },
     (err) => console.log(err)
     )
-
     
   }
 

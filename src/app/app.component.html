@@ -13,10 +13,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let coin of filteredCoins; let i = index">
+    <tr *ngFor="let coin of collection.filteredCoins | paginate: config; let i = index">
 
-      <td class="text-muted">{{i+1}}</td>
+      <td class="text-muted"> {{i+1}}</td>
       <td><img [src]="coin.image" alt="{{coin.name}}" style="width: 2rem;">
+       
         <span class="ms-3">{{coin.name}}
         </span>
         <span class="text-muted text-uppercase ms-2">
@@ -35,5 +36,6 @@
     </tr>
   </tbody>
 </table>
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 
 </div>
