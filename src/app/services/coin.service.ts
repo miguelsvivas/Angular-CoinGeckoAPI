@@ -19,4 +19,18 @@ export class CoinService {
    
   }
 
+  public getCoin(id:string){
+
+
+    let url = 'https://api.coingecko.com/api/v3/coins/'+ id;
+
+    return this.http.get<any>(url);
+  }
+
+  public getTrendingCoins():Observable<Response>{
+    let url = 'https://api.coingecko.com/api/v3/search/trending';
+
+    return this.http.get<Response>(url);
+  }
+
 }

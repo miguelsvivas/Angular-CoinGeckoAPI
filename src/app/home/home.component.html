@@ -1,0 +1,45 @@
+<div class="container">
+
+    <h1>Tabla</h1>
+    <input type="text" class="form-control text-dark border-0 my-4 text-center"
+      (keyup)="searchCoin()"
+      [(ngModel)]="searchText" placeholder="Search...">
+  
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th *ngFor="let title of titles">{{title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let coin of collection.filteredCoins | paginate: config; let i = index">
+  
+        <td class="text-muted"> {{i+1}}</td>
+        <td>
+          <a  [routerLink]="['/coin',coin.id]" style="text-decoration: none;">
+          <img [src]="coin.image" alt="{{coin.name}}" style="width: 2rem;">
+         
+          <span class="ms-3">{{coin.name}}
+          </span>
+          
+          <span class="text-muted text-uppercase ms-2">
+            {{coin.symbol}}
+          </span>
+        </a>
+        </td>
+        <td>
+          ${{coin.current_price.toLocaleString()}}  US$	
+        </td>
+        <td [ngClass]="coin.price_change_percentage_24h > 0 ? 'text-success' : 'text-danger'">
+          {{coin.price_change_percentage_24h.toLocaleString()}}
+        </td>
+        <td>
+          {{coin.total_volume.toLocaleString()}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  
+  
+  </div>

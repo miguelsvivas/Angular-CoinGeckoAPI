@@ -1,0 +1,47 @@
+<div class="container">
+
+    <h1 class="mb-4 mt-2">Top-7 trending coins on CoinGecko </h1>
+   
+  
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Coin</th>
+        <th>Price BTC</th>
+        <th>Market Cap Rank</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tbody>
+        <tr   *ngFor="let object of data ;let i = index">
+    
+          <td class="text-muted"> {{i+1}}</td>
+          <td>
+            <a  [routerLink]="['/coin',object.item.id]" style="text-decoration: none;">
+            <img [src]="object.item.large" alt="{{object.item.name}}" style="width: 2rem;"> 
+           
+            <span class="ms-3">{{object.item.name}}
+            </span>
+            
+            <span class="text-muted text-uppercase ms-2">
+              {{object.item.symbol}}
+            </span>
+          </a> 
+          </td>
+          <td>
+            {{object.item.price_btc.toLocaleString()}} 	
+          </td>
+          
+          <td>
+
+            {{object.item.market_cap_rank}}
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+
+  
+  
+  </div>
