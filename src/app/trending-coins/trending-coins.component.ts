@@ -14,7 +14,7 @@ export class TrendingCoinsComponent implements OnInit {
 
   constructor(private coinService:CoinService) { }
 
- // public userTestStatus: Object[] = [];
+
 
 
 

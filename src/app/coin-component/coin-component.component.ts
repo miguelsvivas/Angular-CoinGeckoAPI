@@ -31,7 +31,17 @@ export class CoinComponentComponent implements OnInit {
 
   categories : [] = [];
 
+  description !: string;
+
+  rank !: number;
+
+  homepage !:string;
+
+  price !:number;
+
+  low_price !: number;
   
+  high_price !:number;
 
 
   ngOnInit(): void {
@@ -45,8 +55,18 @@ export class CoinComponentComponent implements OnInit {
       this.image = respuesta.image.large;
       this.symbol = respuesta.symbol;
       this.categories = respuesta.categories;
+      this.description = respuesta.description.en;
+      this.rank = respuesta.market_cap_rank;
+      this.homepage = respuesta.links.homepage[0];
+      this.price = respuesta.market_data.current_price.usd;
+      this.low_price = respuesta.market_data.low_24h.usd;
+      this.high_price = respuesta.market_data.high_24h.usd;
     });
   }
 
+
+  // high 
+
+  // low 24
 
 }
