@@ -1,0 +1,25 @@
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+img{
+    width: 100px;
+}
+
+.rank{
+    border-radius: 7px;
+    margin-left: 1em;
+    width: 3em;
+    text-align: center;
+}
+
+h2{
+    margin-left: 1em;
+
+}
+
+.price{
+    font-size: 33px;
+}
+

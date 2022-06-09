@@ -1,39 +1,79 @@
-<div class="container">
+<div class="container text-white">
     
-    <h1 class="mt-3">{{name}}</h1><span>({{symbol}})</span>
     
-    <hr>
-    <div class="row">
-    <div class="col">
-        <img [src]="image" >
+    
+    <div class="text-center" >
+        <h1 class="mt-3">{{name}}</h1>
     </div>
-        <div class="col">
-            <h2>Categories</h2>
-            <div *ngFor="let cat of categories">
-                <h4 >{{cat}}</h4>
+    <hr>
+
+
+    <div class="row shadow " >
+        <div class="col-md-8">
+
+            <p class="rank bg-primary">Rank #{{rank}}</p>
+            <br/>
+
+            <div class="d-flex">
+            <img class="mb-3" [src]="image" >
+
+            <h2>{{name}}</h2>
+            <span>({{symbol}})</span>
             </div>
         </div>
-    <div class="col">
-            <h3>Information</h3>
-            <div>
-                <ul class="list-group">
-                    <li class="list-group-item bg-primary text-white">Rank #{{rank}}</li>
-                    <li class="list-group-item"> <span>Web site:  </span>  <a style="text-decoration: none;" href="{{homepage}}"> {{homepage| slice:8:30}}</a></li>
-                    <li class="list-group-item"> <span>Current price:  </span> ${{price.toLocaleString()}}  US$</li>
-                    <li class="list-group-item"> <span>24h Low:  </span> ${{low_price.toLocaleString()}}  US$ / <br/>
-                        <span>24h High:  </span> ${{high_price.toLocaleString()}}  US$
-                    </li>
-                 
+
+        <div class="col-md-4 text-white">
+       
+            <i class="fas fa-link"></i><a style="text-decoration: none;" href="{{homepage}}"> {{homepage| slice:7:30}}</a>
+                
+            <p class="price mt-5"> ${{price.toLocaleString()}}  US</p>
+        </div>
+        
+
+    </div>
 
 
-                </ul>
-               
+
+    <div class="row mt-5 shadow">
+        <div class="col-md-6">
+            <h4>Categories</h4>
+            <div *ngFor="let cat of categories">
+          
+                <li *ngIf="cat!=null">{{cat}}</li>
             </div>
-        </div>    
-</div>
+        </div>
+        
+        <div class="col-md-5" >
+            <h3>Information</h3>
+            <table class="table text-white" >
+                <thead>
+                    <tr>
+                        <th>24h Low</th>
+                        <th>24h High</th>
+                        <th>Price change 1h</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${{low_price.toLocaleString()}}  US$ </td>
+                        <td> ${{high_price.toLocaleString()}}  US$</td>
+                        <td>{{onehchange.toLocaleString()}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>   
 
-    <div class="col mt-4">
-        <p>{{description  | slice:0:1180}}</p>
+    
+
+        
+    </div>
+
+
+    <div class="col mt-5 shadow">
+        <h3>About</h3>
+        <hr>
+        <p>{{description  | slice:0:1180}}.</p>
     </div>
 
 

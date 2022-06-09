@@ -43,6 +43,8 @@ export class CoinComponentComponent implements OnInit {
   
   high_price !:number;
 
+  onehchange !: number;
+
 
   ngOnInit(): void {
 
@@ -61,12 +63,9 @@ export class CoinComponentComponent implements OnInit {
       this.price = respuesta.market_data.current_price.usd;
       this.low_price = respuesta.market_data.low_24h.usd;
       this.high_price = respuesta.market_data.high_24h.usd;
+      this.onehchange = respuesta.market_data.price_change_percentage_1h_in_currency.usd;
     });
   }
 
-
-  // high 
-
-  // low 24
 
 }

@@ -1,13 +1,13 @@
 <div class="container">
 
-    <h2 class="mt-4 text-dark">Crypto API</h2>
-    <input type="text" class="form-control border-primary text-dark my-4 text-center"
+    <h2 class="mt-4 text-white "><span style="color: rgb(16, 146, 75);">Crypto</span> API</h2>
+    <input type="text" class="form-control border-primary text-dark my-4 text-center shadow"
       (keyup)="searchCoin()"
-      [(ngModel)]="searchText" placeholder="Search...">
+      [(ngModel)]="searchText" placeholder="Search a currency...">
 
       <hr>
   
-  <table class="table table-dark">
+  <table class="table table-dark shadow">
     <thead>
       <tr>
         <th *ngFor="let title of titles">{{title}}</th>
@@ -30,7 +30,7 @@
         </a>
         </td>
         <td>
-          ${{coin.current_price.toLocaleString()}}  US$	
+          ${{coin.current_price.toLocaleString()}}  US	
         </td>
         <td [ngClass]="coin.price_change_percentage_24h > 0 ? 'text-success' : 'text-danger'">
           {{coin.price_change_percentage_24h.toLocaleString()}}
@@ -41,7 +41,7 @@
       </tr>
     </tbody>
   </table>
-  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  <pagination-controls class="text-white" (pageChange)="pageChanged($event)"></pagination-controls>
   
   
   </div>
